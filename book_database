@@ -1,0 +1,71 @@
+-- --------------------------------------------------------
+-- Host:                         localhost
+-- Server version:               5.7.24 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Version:             10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Dumping database structure for book_database
+CREATE DATABASE IF NOT EXISTS `book_database` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `book_database`;
+
+-- Dumping structure for table book_database.book_tb
+CREATE TABLE IF NOT EXISTS `book_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `writer_id` int(11) DEFAULT NULL,
+  `publication_year` date DEFAULT NULL,
+  `img` blob,
+  PRIMARY KEY (`id`),
+  KEY `FK__category_tb` (`category_id`),
+  KEY `FK_book_tbl_writer_tb` (`writer_id`),
+  CONSTRAINT `FK__category_tb` FOREIGN KEY (`category_id`) REFERENCES `category_tb` (`id`),
+  CONSTRAINT `FK_book_tbl_writer_tb` FOREIGN KEY (`writer_id`) REFERENCES `writer_tb` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table book_database.book_tb: ~3 rows (approximately)
+/*!40000 ALTER TABLE `book_tb` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book_tb` ENABLE KEYS */;
+
+-- Dumping structure for table book_database.category_tb
+CREATE TABLE IF NOT EXISTS `category_tb` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table book_database.category_tb: ~3 rows (approximately)
+/*!40000 ALTER TABLE `category_tb` DISABLE KEYS */;
+INSERT INTO `category_tb` (`id`, `name`) VALUES
+	(3, 'Komputer dan teknologi'),
+	(4, 'Komik'),
+	(9, 'Horor');
+/*!40000 ALTER TABLE `category_tb` ENABLE KEYS */;
+
+-- Dumping structure for table book_database.writer_tb
+CREATE TABLE IF NOT EXISTS `writer_tb` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `jenkel` enum('pria','wanita') DEFAULT NULL,
+  `no_telp` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table book_database.writer_tb: ~2 rows (approximately)
+/*!40000 ALTER TABLE `writer_tb` DISABLE KEYS */;
+INSERT INTO `writer_tb` (`id`, `name`, `jenkel`, `no_telp`) VALUES
+	(1, 'Abdul Kadir', 'pria', '9999999999999'),
+	(2, 'Intan Paramaditha', 'wanita', '0566788');
+/*!40000 ALTER TABLE `writer_tb` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
