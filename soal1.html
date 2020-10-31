@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var str = "ib2u in1i b3udi";
+
+        console.log((str.match(/(\d+)/g)))
+
+        str = str.split(" ");
+
+
+        var customSort = function (a, b) {
+            return (Number(a.match(/(\d+)/g)[0]) - Number((b.match(/(\d+)/g)[0])));
+
+        }
+                    
+                    
+        str = str.sort(customSort);
+        str = str.join(" ");
+        console.log(str);
+    </script>
+</body>
+</html>

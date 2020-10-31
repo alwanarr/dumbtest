@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function print(s) { document.getElementById('out').innerHTML += s; }
+function println(s) { document.getElementById('out').innerHTML += s + '\n'; }
+
+
+
+
+let count = arr.length;
+for (i = 0; i < arr.length; i++) {
+    for (j = 0; j < arr.length; j++) {
+       
+      if(i == j  ){
+        print(arr[j]);
+        count--;
+      }
+      else if(count == 5){
+          count--;
+
+      }
+      else if(j == count || j == 4 && arr[i] == 'A'){
+        console.log(count);        
+            
+        
+        print(arr[i]);
+      }
+      
+      else{
+        print("=")
+       
+      }
+      
+    }
+  
+  println("\n")
+   
+}
+
+    </script>
+</body>
+</html>
